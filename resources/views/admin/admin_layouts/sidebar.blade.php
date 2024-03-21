@@ -85,6 +85,14 @@
 								<p>Account</p>
 							</a>
 						</li>
+						@if(Auth::user() && Auth::user()->role == 'admin')
+							<li class="nav-item @yield('map')">
+								<a href="{{ route('map') }}">
+									<i class="fas fa-chart-line"></i>
+									<p>Map</p>
+								</a>
+							</li>
+						@endif
 						{{-- @if(Auth::user() && Auth::user()->role == 'admin')
 							<li class="nav-item @yield('analytics')">
 								<a href="{{ route('analytics') }}">

@@ -174,8 +174,12 @@ class AdminController extends Controller
     */
     public function ViewMap()
     {
+        $lotstatusget = Lot::orderBy('id', 'ASC')->get();
 
-        return view('admin.map');
+        // Convert PHP array to a JavaScript array
+        $lotstatus = json_encode($lotstatusget);
+
+        return view('admin.map', compact('lotstatusget'));
     }
 
     public function ViewAnalytics()

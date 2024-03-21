@@ -116,7 +116,7 @@ Route::middleware('auth')->group(function () {
         Route::post('Store-Lot-Owner', 'AddLotOwner')->name('lotowner.store');
 
         Route::get('/session-lot-store/{id}', 'sessionlotstore')->name('lot.session.store');
-
+        Route::get('/session-lot-store/map/{id}', 'sessionlotstoremap')->name('lot.session.store.map');
         Route::get('/session-lot-remove/{id}', 'sessionlotremove')->name('lot.session.remove');
 
 

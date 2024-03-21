@@ -260,6 +260,23 @@ class LotController extends Controller
         return redirect()->back()->with($notification);
     }
 
+    public function sessionlotstoremap(Request $request, $id)
+    {
+        // Get the existing session data or an empty array if it doesn't exist
+        $sessionData = $request->session()->get('session_lot_id', []);
+    
+        // Add the new ID to the array if it doesn't already exist
+        if (!in_array($id, $sessionData)) {
+            $sessionData[] = $id;
+            $request->session()->put('session_lot_id', $sessionData);
+    
+            $notification = ['message' => 'Lot added!', 'alert-type' => 'success'];
+        } else {
+            $notification = ['message' => 'Lot is already in session!', 'alert-type' => 'warning'];
+        }
+    
+        return redirect()->route('lotowner')->with($notification);
+    }
 
     public function sessionlotremove(Request $request, $id)
     {
